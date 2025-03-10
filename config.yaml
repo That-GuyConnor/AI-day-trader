@@ -1,0 +1,174 @@
+# config.yaml
+# Trading Bot Configuration
+
+# API Credentials
+api:
+  alpaca:
+    api_key: "PK8VDC6AQ78XB3308719"
+    api_secret: "4Ctv6Zlzm4kGslORKtkQ19a1lLHZNqevOkyIht3W"
+    base_url: "https://paper-api.alpaca.markets"  # Use paper-api for testing
+
+# Trading Parameters
+trading:
+  # List of stocks to trade
+  tickers:
+    - AAPL
+    - MSFT
+    - GOOGL
+    - AMZN
+    - TSLA
+    - LAC
+    - NVDA
+    - AMD
+    - INTC
+    - BABA
+    - NIO
+  
+  # Risk management
+  risk:
+    max_portfolio_allocation: 0.25
+    max_risk_per_trade: 0.02
+    stop_loss_percentage: 0.05
+    take_profit_percentage: 0.15
+  
+  # Trading schedule
+  schedule:
+    trading_days: [0, 1, 2, 3, 4]  # Monday to Friday (0 is Monday)
+    market_open: "09:30"  # Eastern Time
+    market_close: "16:00"  # Eastern Time
+    check_interval: 60  # Check for new data every 60 seconds
+
+# Data Sources
+data_sources:
+  # RSS feeds to monitor
+  rss_feeds:
+    - name: "Financial Times"
+      url: "https://ft.com/rss/home"
+    - name: "Fortune"
+      url: "https://fortune.com/feed/fortune-feed"
+    - name: "Seeking Alpha"
+      url: "https://seekingalpha.com/feed.xml"
+    - name: "Bankpedia"
+      url: "https://bankpediaa.com/feed"
+    - name: "Nasdaq"
+      url: "https://nasdaq.com/feed/nasdaq-original"
+    - name: "Business Standard"
+      url: "https://business-standard.com/rss/latest"
+    - name: "TheStreet"
+      url: "https://thestreet.com/.rss/full"
+    - name: "Benzinga"
+      url: "https://feeds.benzinga.com/benzinga"
+    - name: "MarketBeat"
+      url: "https://marketbeat.com/feed"
+    - name: "Money"
+      url: "https://money.com/money/feed"
+    - name: "Global Finance Magazine"
+      url: "https://gfmag.com/feed"
+    - name: "Financial Samurai"
+      url: "https://financialsamurai.com/feed"
+    - name: "MoneyWeek"
+      url: "https://moneyweek.com/feed/all"
+    - name: "Finance Monthly"
+      url: "https://finance-monthly.com/feed"
+    - name: "The European Financial Review"
+      url: "https://europeanfinancialreview.com/feed"
+    - name: "Money Morning"
+      url: "https://moneymorning.com/feed"
+    - name: "CFI.co"
+      url: "https://cfi.co/feed"
+    - name: "Dealbreaker"
+      url: "https://dealbreaker.com/.rss/full"
+    - name: "World Finance"
+      url: "https://worldfinance.com/feed"
+    - name: "finews.com"
+      url: "https://finews.com/news/english-news/feed"
+    - name: "FinanceAsia"
+      url: "https://financeasia.com/rss/latest"
+    - name: "The Financial Express"
+      url: "https://financialexpress.com/feed"
+    - name: "Eric Dale Analysis"
+      url: "https://ericdaleanalysis.com/feed"
+    - name: "The Motley Fool"
+      url: "https://fool.com/a/feeds/partner/google"
+    - name: "Business Standard"
+      url: "https://business-standard.com/rss/latest"
+    - name: "TheStreet"
+      url: "https://thestreet.com/.rss/full"
+    - name: "Benzinga"
+      url: "https://feeds.benzinga.com/benzinga"
+    - name: "MarketBeat"
+      url: "https://marketbeat.com/feed"
+    - name: "Money"
+      url: "https://money.com/money/feed"
+    - name: "Global Finance Magazine"
+      url: "https://gfmag.com/feed"
+    - name: "Financial Samurai"
+      url: "https://financialsamurai.com/feed"
+    - name: "MoneyWeek"
+      url: "https://moneyweek.com/feed/all"
+    - name: "Finance Monthly"
+      url: "https://finance-monthly.com/feed"
+    - name: "The European Financial Review"
+      url: "https://europeanfinancialreview.com/feed"
+    - name: "Money Morning"
+      url: "https://moneymorning.com/feed"
+    - name: "CFI.co"
+      url: "https://cfi.co/feed"
+    - name: "Dealbreaker"
+      url: "https://dealbreaker.com/.rss/full"
+    - name: "World Finance"
+      url: "https://worldfinance.com/feed"
+    - name: "finews.com"
+      url: "https://finews.com/news/english-news/feed"
+    - name: "FinanceAsia"
+      url: "https://financeasia.com/rss/latest"
+    - name: "The Financial Express"
+      url: "https://financialexpress.com/feed"
+    - name: "Fox Business"
+      url: "https://moxie.foxbusiness.com/google-publisher/latest.xml"
+    - name: "Seeking Alpha Market News"
+      url: "https://seekingalpha.com/market_curr"
+    - name: "Investing.com World News"
+      url: "https://investing.com/rss/news_287.rss"
+    - name: "Investing.com Politics News"
+      url: "https://investing.com/rss/news_289.rss"
+    - name: "Investopedia"
+      url: "https://feeds-api.dotdashmeredith.co"
+    - name: "MarketWatch"
+      url: "https://marketwatch.com/rss/topstories"
+    - name: "Mint"
+      url: "https://livemint.com/rss/homepage"
+    - name: "Moneyweb"
+      url: "https://moneyweb.co.za/feed"
+
+  # Additional data sources
+  market_data:
+    include_technical_indicators: true
+    historical_data_days: 30
+
+# AI Model Configuration
+model:
+  sentiment_analysis:
+    model_name: "ProsusAI/finbert"
+    confidence_threshold: 0.75
+    use_gpu: true
+    auto_download: true
+  
+  technical_analysis:
+    indicators:
+      - type: "RSI"
+        period: 14
+        overbought: 70
+        oversold: 30
+      - type: "MACD"
+        fast_period: 12
+        slow_period: 26
+        signal_period: 9
+
+# Logging and Monitoring
+logging:
+  level: "INFO"
+  log_to_file: true
+  log_file: "trading_bot.log"
+  max_log_size: 10485760  # 10MB
+  backup_count: 5
